@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { User } from './_modules/user';
+import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 
 @Component({
@@ -22,6 +22,17 @@ export class AppComponent implements OnInit {
     const user: User = JSON.parse(localStorage.getItem('user') || '{}');   
      this.accountService.serCurrentUser(user);
   }
+  
+  isDropdownOpen: boolean = false;
+  selectedItem: string = '';
 
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  selectItem(item: string): void {
+    this.selectedItem = item;
+    this.isDropdownOpen = false;
+  }
 }
 
