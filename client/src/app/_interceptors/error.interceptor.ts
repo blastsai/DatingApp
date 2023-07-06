@@ -33,7 +33,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               }
               break;
             case 401:
-              this.toastr.error('Unthorised', error.status.toString());
+              this.toastr.error("Unauthorised", error.status.toString());
               break;
             case 404:
               this.router.navigateByUrl('/not-found');
@@ -48,7 +48,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
           }
         }
-        throw error;
+        return throwError(error);
       })
     )
   }
