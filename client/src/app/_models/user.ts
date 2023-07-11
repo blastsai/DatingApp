@@ -1,8 +1,8 @@
 export interface User {
     username: string;
     token: string;
+    photoUrl: string;
 }
 
-const multiply = (x: number,y: number) =>  x*y;
 
 
