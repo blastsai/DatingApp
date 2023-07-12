@@ -21,13 +21,12 @@
 
         </ul>
 
-        <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user">
-            <img src="{{user.photoUrl}}" alt="user.username">
-            <a class="dropdown-toggle text-light" style="text-decoration: none; " (click)="toggleDropdown()">Welcome
-                {{user.username | titlecase}}</a>
-            <div class="dropdown-menu mt-3" [class.show]="isDropdownOpen">
-                <a class="dropdown-item" routerLink="/member/edit" routerLinkActive="active">Edit Profile</a>
-                <div class="dropdown-divider"></div>
+        <div class="dropdown" *ngIf="(accountService.currentUser$  | async) as user" dropdown>
+            <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
+            <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Welcome {{user.username | titlecase}}</a>
+            <div class="dropdown-menu mt-3" *dropdownMenu>
+                <a class="dropdown-item" routerLink="/member/edit">Edit Profile</a>
+                <div class="dropdown-divider"></div>       
                 <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
         </div>

@@ -26,23 +26,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-    this.isDropdownOpen = false;
     this.router.navigateByUrl('/');
-  }
-
-  isDropdownOpen: boolean = false;
-
-  toggleDropdown(): void {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
-    const target = event.target as HTMLElement;
-    const dropdown = document.querySelector('.dropdown');
-
-    if (dropdown && !dropdown.contains(target)) {
-      this.isDropdownOpen = false;
-    }
   }
 }
